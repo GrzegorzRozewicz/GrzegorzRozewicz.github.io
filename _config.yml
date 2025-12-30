@@ -1,0 +1,37 @@
+# Site
+repository: GrzegorzRozewicz/GrzegorzRozewicz.github.io/
+
+# Content configuration version
+version: 2
+
+# Personal info
+name: Grzegorz Różewicz
+
+title: Senior BI Developer | Data Analyst | Data Engineer
+
+# Dark Mode (true/false/never)
+darkmode: false
+
+# Social links
+
+github_username:  GrzegorzRozewicz
+linkedin_username: grzrozew
+
+
+# Additional icon links
+
+# - title: another link
+#   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&m=free)
+#   url: Link url (eg. https://google.com)
+
+# Google Analytics and Tag Manager
+# Using more than one of these may cause issues with reporting
+# gtm: "GTM-0000000"
+# gtag: "UA-00000000-0"
+# google_analytics: "UA-00000000-0"
+
+
+# About Section
+# about_title: About Me
+about_profile_image: images/profile.jpg
+about_content: | # this will include new lines to allow paragraphs
