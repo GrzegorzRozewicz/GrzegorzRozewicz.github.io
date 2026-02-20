@@ -1,37 +1,132 @@
 # Site
 repository: GrzegorzRozewicz/GrzegorzRozewicz.github.io/
-
-# Content configuration version
 version: 2
 
 # Personal info
 name: Grzegorz Różewicz
+title: Senior BI Developer | Analytics Expert | Data Engineer
 
-title: Senior BI Developer | Data Analyst | Data Engineer
-
-# Dark Mode (true/false/never)
-darkmode: false
+darkmode: true
 
 # Social links
-
-github_username:  GrzegorzRozewicz
+github_username: GrzegorzRozewicz
 linkedin_username: grzrozew
 
+# -------------------------------------------------------
+# ABOUT
+# -------------------------------------------------------
 
-# Additional icon links
+about_profile_image: image.jpg
+about_content: |
+  Senior BI Developer and Analytics Expert with 10+ years of experience
+  delivering enterprise Business Intelligence solutions in financial and global organizations.
 
-# - title: another link
-#   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&m=free)
-#   url: Link url (eg. https://google.com)
+  Strong expertise in Power BI, Azure and SQL-based analytics.
+  Experienced in translating complex business requirements into scalable
+  data models and performance-optimized reporting solutions.
 
-# Google Analytics and Tag Manager
-# Using more than one of these may cause issues with reporting
-# gtm: "GTM-0000000"
-# gtag: "UA-00000000-0"
-# google_analytics: "UA-00000000-0"
+  Key strengths:
 
+  • Power BI (data modeling, DAX, optimization, enterprise deployments)  
+  • SQL & Data Warehousing  
+  • Azure Data Platform  
+  • Financial & Management Reporting  
+  • Stakeholder collaboration in international environments  
 
-# About Section
-# about_title: About Me
-about_profile_image: images/profile.jpg
-about_content: | # this will include new lines to allow paragraphs
+  Focused on delivering business value through clean data architecture,
+  automation and analytics excellence.
+
+# -------------------------------------------------------
+# EXPERIENCE
+# -------------------------------------------------------
+
+experience_title: Experience
+
+experience:
+  - company: PwC
+    job_title: BI Solutions Expert
+    dates: Jul 2023 – Present
+    description: |
+      Delivering Business Intelligence solutions in client-facing environment.
+      Designing and developing enterprise Power BI reporting solutions.
+      Building scalable data models and supporting Azure-based analytics platforms.
+      Translating business requirements into high-performance BI solutions.
+
+  - company: Franklin Templeton
+    job_title: Senior Business Intelligence Developer
+    dates: Feb 2022 – Aug 2023
+    description: |
+      Member of FT Technology / FP&A Technology Team.
+      Developing and maintaining BI solutions supporting financial reporting.
+      Data warehousing, analytics development and problem solving.
+      Supporting enterprise financial systems and performance reporting.
+
+  - company: Franklin Templeton
+    job_title: Senior Financial Systems Analyst BI
+    dates: Jul 2017 – Feb 2022
+    description: |
+      Management Profitability & Analytics Reporting Team.
+      Cost allocation modelling and financial data analytics.
+      SQL development and reporting automation.
+      Supporting global financial reporting processes.
+
+  - company: Franklin Templeton
+    job_title: Financial Systems Analyst BI
+    dates: Mar 2014 – Jul 2017
+    description: |
+      SQL development and financial reporting & analysis.
+      Supporting finance teams with BI tools.
+      Improving data processes and reporting accuracy.
+
+  - company: Puratos
+    job_title: ICT Specialist
+    dates: Feb 2014 – Mar 2014
+    description: |
+      SAP CRM and IBM Cognos reporting support.
+      Designing and maintaining reports using IBM Cognos.
+      ICT and data modelling support.
+
+  - company: IBM GBS
+    job_title: IBM Cognos Developer
+    dates: Sep 2012 – Feb 2014
+    description: |
+      Developing and maintaining KPIs.
+      Designing complex monthly and quarterly reports.
+      Financial reporting and enterprise report building.
+
+# -------------------------------------------------------
+# CERTIFICATIONS
+# -------------------------------------------------------
+
+certifications_title: Licenses & Certifications
+
+certifications:
+  - name: Microsoft Certified: Power BI Data Analyst Associate
+    issuer: Microsoft
+    dates: Issued Jul 2022 · Expired Jul 2024
+
+  - name: Microsoft Certified: Azure Enterprise Data Analyst Associate
+    issuer: Microsoft
+    dates: Issued Jun 2022 · Expired Jun 2024
+
+  - name: Microsoft Certified: Azure Data Engineer Associate
+    issuer: Microsoft
+    dates: Issued Sep 2023 · Expired Sep 2024
+    description: |
+      Credential ID: 90CE4ABCD3D49BAE
+
+  - name: Microsoft Certified: Power Platform App Maker Associate
+    issuer: Microsoft
+    dates: Issued Feb 2023
+
+  - name: Microsoft Certified: Azure AI Fundamentals
+    issuer: Microsoft
+    dates: Issued Jun 2022
+
+  - name: Microsoft Certified: Azure Data Fundamentals
+    issuer: Microsoft
+    dates: Issued Jun 2022
+
+  - name: Microsoft Certified: Azure Fundamentals
+    issuer: Microsoft
+    dates: Issued May 2022
