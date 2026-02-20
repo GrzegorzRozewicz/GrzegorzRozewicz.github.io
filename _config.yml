@@ -101,32 +101,32 @@ experience:
 certifications_title: Licenses & Certifications
 
 certifications:
-  - name: Microsoft Certified: Power BI Data Analyst Associate
+  - name: "Microsoft Certified: Power BI Data Analyst Associate"
     issuer: Microsoft
-    dates: Issued Jul 2022 · Expired Jul 2024
+    dates: "Issued Jul 2022 · Expired Jul 2024"
 
-  - name: Microsoft Certified: Azure Enterprise Data Analyst Associate
+  - name: "Microsoft Certified: Azure Enterprise Data Analyst Associate"
     issuer: Microsoft
-    dates: Issued Jun 2022 · Expired Jun 2024
+    dates: "Issued Jun 2022 · Expired Jun 2024"
 
-  - name: Microsoft Certified: Azure Data Engineer Associate
+  - name: "Microsoft Certified: Azure Data Engineer Associate"
     issuer: Microsoft
-    dates: Issued Sep 2023 · Expired Sep 2024
+    dates: "Issued Sep 2023 · Expired Sep 2024"
     description: |
       Credential ID: 90CE4ABCD3D49BAE
 
-  - name: Microsoft Certified: Power Platform App Maker Associate
+  - name: "Microsoft Certified: Power Platform App Maker Associate"
     issuer: Microsoft
-    dates: Issued Feb 2023
+    dates: "Issued Feb 2023"
 
-  - name: Microsoft Certified: Azure AI Fundamentals
+  - name: "Microsoft Certified: Azure AI Fundamentals"
     issuer: Microsoft
-    dates: Issued Jun 2022
+    dates: "Issued Jun 2022"
 
-  - name: Microsoft Certified: Azure Data Fundamentals
+  - name: "Microsoft Certified: Azure Data Fundamentals"
     issuer: Microsoft
-    dates: Issued Jun 2022
+    dates: "Issued Jun 2022"
 
-  - name: Microsoft Certified: Azure Fundamentals
+  - name: "Microsoft Certified: Azure Fundamentals"
     issuer: Microsoft
-    dates: Issued May 2022
+    dates: "Issued May 2022"
