@@ -240,8 +240,6 @@ ul li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-si
     <nav class="navlinks">
       <a class="navlink active" href="#hero" data-s="hero"><span class="ndot"></span>Home</a>
       <a class="navlink" href="#impact" data-s="impact"><span class="ndot"></span>Selected Impact</a>
-      <a class="navlink" href="#arch" data-s="arch"><span class="ndot"></span>Architecture</a>
-      <a class="navlink" href="#esg" data-s="esg"><span class="ndot"></span>ESG</a>
       <a class="navlink" href="#exp" data-s="exp"><span class="ndot"></span>Experience</a>
       <a class="navlink" href="#certs" data-s="certs"><span class="ndot"></span>Certifications</a>
     </nav>
@@ -284,7 +282,7 @@ ul li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-si
   <div><div class="sh3">Languages</div>
     <div class="llist">
       <div class="litem"><span class="lname">Polish</span><div class="lbar-w"><div class="lbar" style="width:100%"></div></div><span class="llvl">Native</span></div>
-      <div class="litem"><span class="lname">English</span><div class="lbar-w"><div class="lbar" style="width:88%"></div></div><span class="llvl">Fluent</span></div>
+      <div class="litem"><span class="lname">English</span><div class="lbar-w"><div class="lbar" style="width:88%"></div></div><span class="llvl">Professional</span></div>
     </div>
   </div>
 
@@ -303,6 +301,29 @@ ul li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-si
       <div class="met"><strong><span class="counter" data-target="10" data-suffix="+">0</span> Years</strong>Enterprise Data &amp; BI</div>
       <div class="met"><strong>SQL &amp; Modeling</strong>Performance Optimization</div>
       <div class="met"><strong>Azure &amp; Databricks</strong>End-to-End Data Systems</div>
+      <div class="met"><strong>Power BI · Cognos · Tableau</strong>Enterprise BI Platforms</div>
+    </div>
+  </section>
+
+  <section class="sec reveal" id="arch">
+    <div class="sech"><h2>Analytics Engineering &amp; Architecture</h2><div class="secl"></div></div>
+    <div class="g2 stagger">
+      <ul>
+        <li>Dimensional modeling (Star/Snowflake)</li>
+        <li>Warehouse &amp; Medallion architecture</li>
+        <li>Data transformation pipelines (ELT)</li>
+        <li>Performance tuning (SQL &amp; DAX)</li>
+        <li>Databricks pipelines (PySpark / Python)</li>
+        <li>CI/CD for data &amp; analytics workflows</li>
+      </ul>
+      <ul>
+        <li>Semantic layer engineering</li>
+        <li>Governance &amp; row-level security</li>
+        <li>Scalability design patterns</li>
+        <li>AI-ready structured datasets</li>
+        <li>ESG data modeling &amp; CO₂ reporting</li>
+        <li>Automated emission tracking pipelines</li>
+      </ul>
     </div>
   </section>
 
@@ -335,43 +356,17 @@ ul li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-si
           <li>Ensured data quality and lineage across distributed processing jobs</li>
         </ul>
       </div>
-    </div>
-  </section>
-
-  <section class="sec reveal" id="arch">
-    <div class="sech"><h2>Analytics Engineering &amp; Architecture</h2><div class="secl"></div></div>
-    <div class="g2 stagger">
-      <ul>
-        <li>Dimensional modeling (Star/Snowflake)</li>
-        <li>Warehouse &amp; Medallion architecture</li>
-        <li>Data transformation pipelines (ELT)</li>
-        <li>Performance tuning (SQL &amp; DAX)</li>
-        <li>Databricks pipelines (PySpark / Python)</li>
-        <li>CI/CD for data &amp; analytics workflows</li>
-      </ul>
-      <ul>
-        <li>Semantic layer engineering</li>
-        <li>Governance &amp; row-level security</li>
-        <li>Scalability design patterns</li>
-        <li>AI-ready structured datasets</li>
-        <li>ESG data modeling &amp; CO₂ reporting</li>
-        <li>Automated emission tracking pipelines</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="sec reveal" id="esg">
-    <div class="sech"><h2>ESG &amp; Sustainability Analytics</h2><div class="secl"></div></div>
-    <div class="card tilt" style="border-color:rgba(63,185,80,0.2)">
-      <h3 style="color:var(--accent2)">CO₂ Emissions Reporting &amp; Reduction</h3>
-      <p>Delivered end-to-end analytics solutions for ESG-focused projects, enabling organizations to track, report and reduce their carbon footprint in line with regulatory and sustainability frameworks.</p>
-      <ul>
-        <li>Designed data models and pipelines for CO₂ emission tracking across business units</li>
-        <li>Built automated reporting covering Scope 1, 2 &amp; 3 emissions categories</li>
-        <li>Integrated ESG data sources into enterprise data warehouses</li>
-        <li>Supported sustainability disclosure and compliance reporting</li>
-        <li>Enabled data-driven decision making for emission reduction initiatives</li>
-      </ul>
+      <div class="card tilt" style="border-color:rgba(63,185,80,0.2)">
+        <h3 style="color:var(--accent2)">ESG &amp; Sustainability Analytics — CO₂ Emissions Reporting</h3>
+        <p>Delivered end-to-end analytics solutions for ESG-focused projects, enabling organizations to track, report and reduce their carbon footprint in line with regulatory and sustainability frameworks.</p>
+        <ul>
+          <li>Designed data models and pipelines for CO₂ emission tracking across business units</li>
+          <li>Built automated reporting covering Scope 1, 2 &amp; 3 emissions categories</li>
+          <li>Integrated ESG data sources into enterprise data warehouses</li>
+          <li>Supported sustainability disclosure and compliance reporting</li>
+          <li>Enabled data-driven decision making for emission reduction initiatives</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -520,7 +515,7 @@ document.addEventListener('mouseleave',()=>spot.style.opacity='0');
 
 // ACTIVE NAV
 (function(){
-  const ids=['hero','impact','arch','esg','exp','certs'];
+  const ids=['hero','arch','impact','exp','certs'];
   const links=document.querySelectorAll('.navlink');
   const io=new IntersectionObserver(es=>{
     es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;links.forEach(l=>l.classList.toggle('active',l.dataset.s===id))}});
