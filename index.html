@@ -83,13 +83,25 @@ body{
 
 .section{
   margin-bottom:60px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp .6s ease forwards;
+}
+
+.section:nth-child(2){animation-delay:.1s}
+.section:nth-child(3){animation-delay:.2s}
+.section:nth-child(4){animation-delay:.3s}
+.section:nth-child(5){animation-delay:.4s}
+
+@keyframes fadeUp{
+  to{opacity:1;transform:translateY(0)}
 }
 
 h2{
   font-size:18px;
   margin-bottom:18px;
-  text-transform:uppercase;
   letter-spacing:.5px;
+  text-transform:uppercase;
   color:var(--accent);
 }
 
@@ -99,10 +111,24 @@ p{
   font-size:14px;
 }
 
-/* TIMELINE */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:16px;
+  transition:.2s ease;
+}
+
+.card:hover{
+  border-color:var(--accent);
+  transform:translateY(-3px);
+}
+
+/* EXPERIENCE TIMELINE */
 
 .timeline-item{
-  margin-bottom:28px;
+  margin-bottom:20px;
   padding-left:18px;
   border-left:2px solid var(--border);
 }
@@ -110,45 +136,24 @@ p{
 .timeline-item strong{
   display:block;
   font-size:15px;
-  margin-bottom:4px;
+  margin-bottom:3px;
 }
 
 .timeline-item span{
   font-size:12px;
   color:var(--muted);
-  display:block;
-  margin-bottom:8px;
-}
-
-.timeline-item ul{
-  list-style:none;
-}
-
-.timeline-item ul li{
-  font-size:13px;
-  color:var(--muted);
-  margin-bottom:6px;
-  position:relative;
-  padding-left:16px;
-}
-
-.timeline-item ul li::before{
-  content:"▸";
-  position:absolute;
-  left:0;
-  color:var(--accent);
 }
 
 /* CERT GRID */
 
 .cert-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
 }
 
 .cert{
-  padding:16px;
+  padding:14px 16px;
   background:var(--card);
   border:1px solid var(--border);
   border-radius:10px;
@@ -180,6 +185,7 @@ p{
 
 <div class="layout">
 
+<!-- SIDEBAR -->
 <div class="sidebar">
   <img src="profile.jpg" alt="Profile photo">
   <h1>Grzegorz Różewicz</h1>
@@ -187,8 +193,10 @@ p{
 
   <a href="https://linkedin.com/in/grzrozew">LinkedIn</a>
   <a href="https://github.com/GrzegorzRozewicz">GitHub</a>
+  <a href="mailto:your@email.com">Email</a>
 </div>
 
+<!-- CONTENT -->
 <div class="content">
 
 <section class="section">
@@ -201,38 +209,38 @@ p{
 </section>
 
 <section class="section">
+  <h2>Enterprise Impact</h2>
+
+  <div class="card">
+    Reduced financial reporting cycle by 35% by redesigning semantic layer and DAX optimization.
+  </div>
+
+  <div class="card">
+    Built allocation engine in SQL enabling cross-region profitability analysis.
+  </div>
+
+  <div class="card">
+    Automated 20+ finance workflows eliminating manual reconciliation.
+  </div>
+
+</section>
+
+<section class="section">
   <h2>Experience</h2>
 
   <div class="timeline-item">
     <strong>PwC — BI Solutions Expert</strong>
     <span>2023–Present</span>
-    <ul>
-      <li>Designed enterprise-grade financial reporting solutions in Power BI</li>
-      <li>Led semantic model architecture and DAX performance optimization</li>
-      <li>Collaborated with senior stakeholders across finance & controlling</li>
-      <li>Improved reporting cycle efficiency by up to 35%</li>
-    </ul>
   </div>
 
   <div class="timeline-item">
     <strong>Franklin Templeton — Senior BI & Financial Systems Analyst</strong>
     <span>2014–2023</span>
-    <ul>
-      <li>Built allocation engines and profitability models in SQL</li>
-      <li>Automated 20+ manual finance reconciliation processes</li>
-      <li>Developed enterprise data warehouse structures</li>
-      <li>Supported global FP&A and management reporting teams</li>
-    </ul>
   </div>
 
   <div class="timeline-item">
     <strong>Puratos — IBM Cognos Developer</strong>
     <span>2012–2014</span>
-    <ul>
-      <li>Developed BI reports and dashboards in IBM Cognos</li>
-      <li>Maintained enterprise reporting environments</li>
-      <li>Supported data modeling and ETL processes</li>
-    </ul>
   </div>
 
 </section>
@@ -241,11 +249,11 @@ p{
   <h2>Certifications</h2>
 
   <div class="cert-grid">
-    <div class="cert">Microsoft Certified: Azure Data Engineer Associate</div>
-    <div class="cert">Microsoft Certified: Power BI Data Analyst Associate</div>
-    <div class="cert">Microsoft Certified: Azure Enterprise Data Analyst Associate</div>
-    <div class="cert">Microsoft Certified: Power Platform App Maker Associate</div>
-    <div class="cert">Microsoft Certified: Azure AI Fundamentals</div>
+    <div class="cert">Power BI Data Analyst Associate</div>
+    <div class="cert">Azure Data Engineer Associate</div>
+    <div class="cert">Azure Enterprise Data Analyst Associate</div>
+    <div class="cert">Power Platform App Maker</div>
+    <div class="cert">Azure AI Fundamentals</div>
   </div>
 
 </section>
