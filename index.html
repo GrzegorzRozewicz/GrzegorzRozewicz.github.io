@@ -10,6 +10,7 @@
 <style>
 :root{
   --bg:#0b0f14;
+  --sidebar:#11161d;
   --card:#121821;
   --border:#1f2630;
   --accent:#4da3ff;
@@ -18,6 +19,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
+
 body{
   font-family:'Inter',sans-serif;
   background:var(--bg);
@@ -25,35 +27,119 @@ body{
   line-height:1.7;
 }
 
-.container{
-  max-width:1000px;
-  margin:0 auto;
-  padding:60px 24px;
+.wrapper{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  min-height:100vh;
 }
 
-h1{font-size:42px;font-weight:700;letter-spacing:-1px}
-h2{font-size:22px;margin-bottom:28px}
-h3{font-size:16px;margin-bottom:12px}
-p{color:var(--muted);margin-bottom:16px}
+/* SIDEBAR */
 
-.section{margin-bottom:90px}
+.sidebar{
+  background:var(--sidebar);
+  border-right:1px solid var(--border);
+  padding:50px 30px;
+  position:sticky;
+  top:0;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.avatar{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid var(--accent);
+  margin-bottom:25px;
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.name{
+  font-size:18px;
+  font-weight:600;
+  text-align:center;
+}
+
+.title{
+  font-size:13px;
+  color:var(--muted);
+  text-align:center;
+  margin-top:6px;
+  margin-bottom:30px;
+}
+
+.sidebar-links{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  width:100%;
+  margin-top:20px;
+}
+
+.sidebar-links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:14px;
+  text-align:center;
+  transition:color .2s ease;
+}
+
+.sidebar-links a:hover{
+  color:var(--accent);
+}
+
+/* MAIN */
+
+.main{
+  padding:70px 60px;
+  max-width:1000px;
+}
+
+.section{
+  margin-bottom:90px;
+}
+
+h1{
+  font-size:42px;
+  font-weight:700;
+  letter-spacing:-1px;
+}
 
 .hero-sub{
   font-size:18px;
   color:var(--muted);
-  margin-top:12px;
+  margin-top:15px;
   margin-bottom:40px;
 }
 
-.hero-metrics{
+h2{
+  font-size:22px;
+  margin-bottom:30px;
+}
+
+h3{
+  font-size:16px;
+  margin-bottom:12px;
+}
+
+p{
+  color:var(--muted);
+  margin-bottom:16px;
+}
+
+.metric-row{
   display:flex;
   gap:40px;
   flex-wrap:wrap;
   margin-top:30px;
-}
-
-.metric{
-  font-size:14px;
 }
 
 .metric strong{
@@ -68,7 +154,7 @@ p{color:var(--muted);margin-bottom:16px}
   padding:28px;
   border-radius:12px;
   margin-bottom:24px;
-  transition:all .2s ease;
+  transition:.2s ease;
 }
 
 .card:hover{
@@ -81,8 +167,8 @@ ul{
 
 ul li{
   margin-bottom:10px;
-  position:relative;
   padding-left:18px;
+  position:relative;
   color:var(--muted);
 }
 
@@ -100,21 +186,22 @@ ul li::before{
 }
 
 .footer{
-  margin-top:60px;
+  margin-top:80px;
   padding-top:30px;
   border-top:1px solid var(--border);
-  color:var(--muted);
   font-size:13px;
+  color:var(--muted);
 }
 
-a{
-  color:var(--accent);
-  text-decoration:none;
-}
-
-a:hover{text-decoration:underline}
-
-@media(max-width:768px){
+@media(max-width:900px){
+  .wrapper{grid-template-columns:1fr}
+  .sidebar{
+    position:relative;
+    height:auto;
+    border-right:none;
+    border-bottom:1px solid var(--border);
+  }
+  .main{padding:50px 25px}
   h1{font-size:32px}
   .grid-2{grid-template-columns:1fr}
 }
@@ -123,103 +210,99 @@ a:hover{text-decoration:underline}
 
 <body>
 
-<div class="container">
+<div class="wrapper">
 
-<!-- HERO -->
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="avatar">
+    <img src="image.jpg" alt="Grzegorz Różewicz">
+  </div>
+
+  <div class="name">Grzegorz Różewicz</div>
+  <div class="title">Enterprise Analytics Architect<br>Finance & Data Platforms</div>
+
+  <div class="sidebar-links">
+    <a href="https://github.com/GrzegorzRozewicz" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/grzrozew" target="_blank">LinkedIn</a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
 <section class="section">
-  <h1>Enterprise Analytics Architect</h1>
+  <h1>Designing Scalable Analytics Systems for Global Finance</h1>
   <p class="hero-sub">
-    Designing scalable financial analytics platforms for global organizations.
+    10+ years building enterprise BI & data platforms with Azure and Power BI.
   </p>
 
-  <div class="hero-metrics">
+  <div class="metric-row">
     <div class="metric">
-      <strong>10+ years</strong>
+      <strong>10+ Years</strong>
       Enterprise BI & Data
     </div>
     <div class="metric">
       <strong>Finance Specialized</strong>
-      FP&A · Management Reporting
+      FP&A & Reporting
     </div>
     <div class="metric">
-      <strong>Azure & Power BI</strong>
-      End-to-End Architecture
+      <strong>Architecture First</strong>
+      Scalable Design
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section">
-  <h2>About</h2>
-  <p>
-    I design and implement enterprise-grade analytics ecosystems that transform complex financial
-    and operational data into scalable, high-performance reporting platforms.
-  </p>
-  <p>
-    Over the past decade, I have led BI and data initiatives in global organizations,
-    specializing in semantic modeling, financial data architecture, and Azure-based data platforms.
-    My focus extends beyond dashboards — I architect systems that reduce reporting cycles,
-    improve governance, and enable executive decision-making.
-  </p>
-</section>
-
-<!-- IMPACT -->
 <section class="section">
   <h2>Selected Enterprise Impact</h2>
 
   <div class="card">
     <h3>Global Financial Reporting Platform</h3>
     <ul>
-      <li>Reduced reporting cycle by up to 35%</li>
-      <li>Automated 20+ manual finance processes</li>
+      <li>Reduced reporting cycle by 35%</li>
+      <li>Automated 20+ manual processes</li>
       <li>Designed semantic model serving 100+ stakeholders</li>
-      <li>Optimized DAX & data model improving performance by 40%</li>
+      <li>Improved dataset performance by 40%</li>
     </ul>
   </div>
 
   <div class="card">
     <h3>Cost Allocation & Profitability Analytics</h3>
     <ul>
-      <li>Designed SQL-based allocation engine for enterprise finance</li>
-      <li>Enabled cross-region cost visibility</li>
-      <li>Reduced reconciliation workload by 30%</li>
+      <li>Designed SQL-based allocation engine</li>
+      <li>Enabled cross-region financial visibility</li>
+      <li>Reduced reconciliation effort by 30%</li>
     </ul>
   </div>
 </section>
 
-<!-- ARCHITECTURE -->
 <section class="section">
   <h2>Architecture Expertise</h2>
-
   <div class="grid-2">
     <ul>
-      <li>Star & Snowflake schema design</li>
-      <li>Enterprise data warehouse architecture</li>
+      <li>Star & Snowflake schema</li>
+      <li>Enterprise Data Warehouse design</li>
       <li>Medallion architecture (Azure)</li>
       <li>ETL / ELT pipelines</li>
     </ul>
     <ul>
-      <li>Power BI semantic layer design</li>
+      <li>Power BI semantic modeling</li>
       <li>DAX & Vertipaq optimization</li>
-      <li>Governance & Row-Level Security</li>
-      <li>Performance tuning & scalability design</li>
+      <li>Governance & RLS</li>
+      <li>Scalability & performance tuning</li>
     </ul>
   </div>
 </section>
 
-<!-- MODERN -->
 <section class="section">
   <h2>Modern Analytics & AI</h2>
   <ul>
     <li>Azure-based analytics platforms</li>
-    <li>Data modeling for AI-ready datasets</li>
     <li>Automation-first BI ecosystems</li>
-    <li>Copilot-assisted reporting workflows</li>
-    <li>Exploratory LLM integration in analytics processes</li>
+    <li>Copilot-assisted workflows</li>
+    <li>AI-ready data modeling</li>
   </ul>
 </section>
 
-<!-- EXPERIENCE -->
 <section class="section">
   <h2>Professional Experience</h2>
   <p><strong>PwC</strong> – BI Solutions Expert (2023–Present)</p>
@@ -227,24 +310,12 @@ a:hover{text-decoration:underline}
   <p><strong>Puratos</strong> – IBM Cognos Developer (2012–2014)</p>
 </section>
 
-<!-- CERTIFICATIONS -->
-<section class="section">
-  <h2>Certifications</h2>
-  <ul>
-    <li>Microsoft Certified: Power BI Data Analyst Associate</li>
-    <li>Microsoft Certified: Azure Data Engineer Associate</li>
-    <li>Microsoft Certified: Azure Enterprise Data Analyst Associate</li>
-    <li>Microsoft Certified: Power Platform App Maker Associate</li>
-    <li>Microsoft Certified: Azure AI Fundamentals</li>
-  </ul>
-</section>
-
 <div class="footer">
-  © 2026 Grzegorz Różewicz ·
-  <a href="https://github.com/GrzegorzRozewicz">GitHub</a> ·
-  <a href="https://linkedin.com/in/grzrozew">LinkedIn</a>
+  © 2026 Grzegorz Różewicz
 </div>
 
+</main>
 </div>
+
 </body>
 </html>
