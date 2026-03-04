@@ -65,26 +65,14 @@ body{
 }
 
 .sidebar a{
-  display:flex;
-  align-items:center;
-  gap:8px;
+  display:block;
   color:var(--accent);
   text-decoration:none;
-  margin-bottom:12px;
+  margin-bottom:10px;
   font-size:14px;
-  transition:.2s ease;
 }
 
-.sidebar a svg{
-  width:16px;
-  height:16px;
-  fill:var(--accent);
-}
-
-.sidebar a:hover{
-  opacity:.8;
-  transform:translateX(3px);
-}
+.sidebar a:hover{opacity:.8}
 
 /* CONTENT */
 
@@ -111,58 +99,10 @@ p{
   font-size:14px;
 }
 
-/* SKILL TAGS */
-
-.skill-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-.tag{
-  padding:8px 14px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:30px;
-  font-size:13px;
-  color:var(--muted);
-  transition:.25s ease;
-  cursor:default;
-}
-
-.tag:hover{
-  color:var(--text);
-  border-color:var(--accent);
-  box-shadow:0 0 12px rgba(77,163,255,.5);
-  transform:translateY(-2px);
-}
-
-/* TECH STACK GRID */
-
-.stack-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:16px;
-}
-
-.stack-item{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:18px;
-  font-size:14px;
-  transition:.2s ease;
-}
-
-.stack-item:hover{
-  border-color:var(--accent);
-  transform:translateY(-3px);
-}
-
 /* TIMELINE */
 
 .timeline-item{
-  margin-bottom:20px;
+  margin-bottom:28px;
   padding-left:18px;
   border-left:2px solid var(--border);
 }
@@ -170,24 +110,45 @@ p{
 .timeline-item strong{
   display:block;
   font-size:15px;
-  margin-bottom:3px;
+  margin-bottom:4px;
 }
 
 .timeline-item span{
   font-size:12px;
   color:var(--muted);
+  display:block;
+  margin-bottom:8px;
+}
+
+.timeline-item ul{
+  list-style:none;
+}
+
+.timeline-item ul li{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:6px;
+  position:relative;
+  padding-left:16px;
+}
+
+.timeline-item ul li::before{
+  content:"▸";
+  position:absolute;
+  left:0;
+  color:var(--accent);
 }
 
 /* CERT GRID */
 
 .cert-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
 }
 
 .cert{
-  padding:14px 16px;
+  padding:16px;
   background:var(--card);
   border:1px solid var(--border);
   border-radius:10px;
@@ -224,68 +185,69 @@ p{
   <h1>Grzegorz Różewicz</h1>
   <p>Analytics Engineering · Enterprise Finance</p>
 
-  <a href="https://github.com/GrzegorzRozewicz">
-    <svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.8 5.4.8 11.7c0 5 3.2 9.2 7.6 10.7.6.1.8-.2.8-.6v-2c-3.1.7-3.7-1.3-3.7-1.3-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.7-1.4 2.7-1.9.2-.8.6-1.4 1-1.7-2.5-.3-5.2-1.3-5.2-5.8 0-1.3.5-2.4 1.1-3.3-.1-.3-.5-1.5.1-3 0 0 .9-.3 3.3 1.2a11.6 11.6 0 0 1 6 0c2.4-1.5 3.3-1.2 3.3-1.2.6 1.5.2 2.7.1 3 .7.9 1.1 2 1.1 3.3 0 4.5-2.7 5.4-5.2 5.8.6.5 1 1.3 1 2.7v4c0 .4.2.7.8.6 4.4-1.5 7.6-5.7 7.6-10.7C23.2 5.4 18.3.5 12 .5z"/></svg>
-    GitHub
-  </a>
-
-  <a href="https://linkedin.com/in/grzrozew">
-    <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 5 3.9 6 2.5 6S0 5 0 3.5 1.1 1 2.5 1 4.98 2 4.98 3.5zM.2 8h4.6v15H.2V8zM8 8h4.4v2h.1c.6-1.1 2-2.2 4.2-2.2 4.5 0 5.3 3 5.3 6.9V23h-4.6v-7.3c0-1.8 0-4-2.4-4s-2.8 1.9-2.8 3.9V23H8V8z"/></svg>
-    LinkedIn
-  </a>
-
+  <a href="https://linkedin.com/in/grzrozew">LinkedIn</a>
+  <a href="https://github.com/GrzegorzRozewicz">GitHub</a>
 </div>
 
 <div class="content">
 
 <section class="section">
-  <h2>Core Skills</h2>
-  <div class="skill-tags">
-    <div class="tag">SQL Engineering</div>
-    <div class="tag">Power BI Semantic Models</div>
-    <div class="tag">DAX Optimization</div>
-    <div class="tag">Azure Data Factory</div>
-    <div class="tag">Data Warehousing</div>
-    <div class="tag">Star Schema</div>
-    <div class="tag">Financial Modeling</div>
-    <div class="tag">Analytics Engineering</div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Technical Stack</h2>
-  <div class="stack-grid">
-    <div class="stack-item">Azure Synapse</div>
-    <div class="stack-item">Azure SQL</div>
-    <div class="stack-item">Power BI</div>
-    <div class="stack-item">SQL Server</div>
-    <div class="stack-item">DAX</div>
-    <div class="stack-item">Python (Analytics)</div>
-    <div class="stack-item">Git</div>
-    <div class="stack-item">CI/CD</div>
-  </div>
+  <h2>About</h2>
+  <p>
+    Analytics Engineer specializing in enterprise financial data platforms.
+    Designing scalable semantic layers, optimized data models,
+    and Azure-based analytics ecosystems for global organizations.
+  </p>
 </section>
 
 <section class="section">
   <h2>Experience</h2>
+
   <div class="timeline-item">
     <strong>PwC — BI Solutions Expert</strong>
     <span>2023–Present</span>
+    <ul>
+      <li>Designed enterprise-grade financial reporting solutions in Power BI</li>
+      <li>Led semantic model architecture and DAX performance optimization</li>
+      <li>Collaborated with senior stakeholders across finance & controlling</li>
+      <li>Improved reporting cycle efficiency by up to 35%</li>
+    </ul>
   </div>
+
   <div class="timeline-item">
     <strong>Franklin Templeton — Senior BI & Financial Systems Analyst</strong>
     <span>2014–2023</span>
+    <ul>
+      <li>Built allocation engines and profitability models in SQL</li>
+      <li>Automated 20+ manual finance reconciliation processes</li>
+      <li>Developed enterprise data warehouse structures</li>
+      <li>Supported global FP&A and management reporting teams</li>
+    </ul>
   </div>
+
+  <div class="timeline-item">
+    <strong>Puratos — IBM Cognos Developer</strong>
+    <span>2012–2014</span>
+    <ul>
+      <li>Developed BI reports and dashboards in IBM Cognos</li>
+      <li>Maintained enterprise reporting environments</li>
+      <li>Supported data modeling and ETL processes</li>
+    </ul>
+  </div>
+
 </section>
 
 <section class="section">
   <h2>Certifications</h2>
+
   <div class="cert-grid">
-    <div class="cert">Azure Data Engineer Associate</div>
-    <div class="cert">Power BI Data Analyst Associate</div>
-    <div class="cert">Azure Enterprise Data Analyst</div>
-    <div class="cert">Azure AI Fundamentals</div>
+    <div class="cert">Microsoft Certified: Azure Data Engineer Associate</div>
+    <div class="cert">Microsoft Certified: Power BI Data Analyst Associate</div>
+    <div class="cert">Microsoft Certified: Azure Enterprise Data Analyst Associate</div>
+    <div class="cert">Microsoft Certified: Power Platform App Maker Associate</div>
+    <div class="cert">Microsoft Certified: Azure AI Fundamentals</div>
   </div>
+
 </section>
 
 </div>
