@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Grzegorz Różewicz | Enterprise Analytics Architect</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grzegorz Różewicz | Analytics Engineering & Data Architecture</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --bg:#0b0f14;
-  --sidebar:#11161d;
-  --card:#121821;
-  --border:#1f2630;
+  --bg-gradient: radial-gradient(circle at 20% 20%, #11203a 0%, #0b0f14 60%);
+  --glass: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.08);
   --accent:#4da3ff;
+  --accent-glow:rgba(77,163,255,0.35);
   --text:#e6edf3;
   --muted:#8b949e;
 }
@@ -23,22 +24,27 @@
 body{
   font-family:'Inter',sans-serif;
   background:var(--bg);
+  background-image:var(--bg-gradient);
   color:var(--text);
   line-height:1.7;
+  -webkit-font-smoothing:antialiased;
 }
+
+/* Layout */
 
 .wrapper{
   display:grid;
-  grid-template-columns:280px 1fr;
+  grid-template-columns:300px 1fr;
   min-height:100vh;
 }
 
-/* SIDEBAR */
+/* Sidebar */
 
 .sidebar{
-  background:var(--sidebar);
+  backdrop-filter:blur(12px);
+  background:rgba(15,20,30,0.85);
   border-right:1px solid var(--border);
-  padding:50px 30px;
+  padding:60px 30px;
   position:sticky;
   top:0;
   height:100vh;
@@ -48,12 +54,18 @@ body{
 }
 
 .avatar{
-  width:130px;
-  height:130px;
+  width:140px;
+  height:140px;
   border-radius:50%;
   overflow:hidden;
   border:3px solid var(--accent);
+  box-shadow:0 0 25px var(--accent-glow);
   margin-bottom:25px;
+  transition:transform .4s ease;
+}
+
+.avatar:hover{
+  transform:scale(1.05);
 }
 
 .avatar img{
@@ -72,93 +84,102 @@ body{
   font-size:13px;
   color:var(--muted);
   text-align:center;
-  margin-top:6px;
+  margin-top:8px;
   margin-bottom:30px;
 }
 
-.sidebar-links{
+.links{
   display:flex;
   flex-direction:column;
-  gap:14px;
-  width:100%;
+  gap:15px;
   margin-top:20px;
 }
 
-.sidebar-links a{
+.links a{
   color:var(--muted);
   text-decoration:none;
   font-size:14px;
-  text-align:center;
-  transition:color .2s ease;
+  transition:.2s ease;
 }
 
-.sidebar-links a:hover{
+.links a:hover{
   color:var(--accent);
 }
 
-/* MAIN */
+/* Main */
 
 .main{
-  padding:70px 60px;
-  max-width:1000px;
+  padding:80px 70px;
+  max-width:1100px;
 }
 
 .section{
-  margin-bottom:90px;
+  margin-bottom:110px;
+  animation:fadeUp .8s ease both;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 h1{
-  font-size:42px;
+  font-size:48px;
   font-weight:700;
   letter-spacing:-1px;
+  background:linear-gradient(to right,#fff,#9dbfff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 .hero-sub{
-  font-size:18px;
+  font-size:19px;
   color:var(--muted);
-  margin-top:15px;
-  margin-bottom:40px;
+  margin-top:20px;
+  margin-bottom:45px;
+}
+
+.metric-row{
+  display:flex;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+.metric strong{
+  display:block;
+  font-size:22px;
+  color:var(--accent);
+}
+
+.card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  padding:30px;
+  border-radius:16px;
+  backdrop-filter:blur(10px);
+  margin-bottom:25px;
+  transition:.3s ease;
+}
+
+.card:hover{
+  border-color:var(--accent);
+  transform:translateY(-4px);
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
 }
 
 h2{
-  font-size:22px;
-  margin-bottom:30px;
+  font-size:24px;
+  margin-bottom:35px;
 }
 
 h3{
-  font-size:16px;
+  font-size:17px;
   margin-bottom:12px;
 }
 
 p{
   color:var(--muted);
-  margin-bottom:16px;
-}
-
-.metric-row{
-  display:flex;
-  gap:40px;
-  flex-wrap:wrap;
-  margin-top:30px;
-}
-
-.metric strong{
-  display:block;
-  font-size:20px;
-  color:var(--accent);
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:28px;
-  border-radius:12px;
-  margin-bottom:24px;
-  transition:.2s ease;
-}
-
-.card:hover{
-  border-color:var(--accent);
+  margin-bottom:18px;
 }
 
 ul{
@@ -166,8 +187,8 @@ ul{
 }
 
 ul li{
+  padding-left:20px;
   margin-bottom:10px;
-  padding-left:18px;
   position:relative;
   color:var(--muted);
 }
@@ -182,27 +203,22 @@ ul li::before{
 .grid-2{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:30px;
+  gap:40px;
 }
 
 .footer{
-  margin-top:80px;
+  margin-top:100px;
   padding-top:30px;
   border-top:1px solid var(--border);
   font-size:13px;
   color:var(--muted);
 }
 
-@media(max-width:900px){
+@media(max-width:1000px){
   .wrapper{grid-template-columns:1fr}
-  .sidebar{
-    position:relative;
-    height:auto;
-    border-right:none;
-    border-bottom:1px solid var(--border);
-  }
-  .main{padding:50px 25px}
-  h1{font-size:32px}
+  .sidebar{height:auto;position:relative;border-right:none;border-bottom:1px solid var(--border)}
+  .main{padding:60px 30px}
+  h1{font-size:34px}
   .grid-2{grid-template-columns:1fr}
 }
 </style>
@@ -212,99 +228,91 @@ ul li::before{
 
 <div class="wrapper">
 
-<!-- SIDEBAR -->
+<!-- Sidebar -->
 <aside class="sidebar">
   <div class="avatar">
     <img src="image.jpg" alt="Grzegorz Różewicz">
   </div>
-
   <div class="name">Grzegorz Różewicz</div>
-  <div class="title">Enterprise Analytics Architect<br>Finance & Data Platforms</div>
-
-  <div class="sidebar-links">
+  <div class="title">
+    Analytics Engineering<br>
+    Data Architecture · Finance
+  </div>
+  <div class="links">
     <a href="https://github.com/GrzegorzRozewicz" target="_blank">GitHub</a>
     <a href="https://linkedin.com/in/grzrozew" target="_blank">LinkedIn</a>
   </div>
 </aside>
 
-<!-- MAIN -->
+<!-- Main -->
 <main class="main">
 
 <section class="section">
-  <h1>Designing Scalable Analytics Systems for Global Finance</h1>
+  <h1>Analytics Engineering at Enterprise Scale</h1>
   <p class="hero-sub">
-    10+ years building enterprise BI & data platforms with Azure and Power BI.
+    Designing high-performance data models and scalable analytics systems used by global finance teams.
   </p>
 
   <div class="metric-row">
     <div class="metric">
       <strong>10+ Years</strong>
-      Enterprise BI & Data
+      Enterprise Data & BI
     </div>
     <div class="metric">
-      <strong>Finance Specialized</strong>
-      FP&A & Reporting
+      <strong>SQL & Modeling</strong>
+      Performance Optimization
     </div>
     <div class="metric">
-      <strong>Architecture First</strong>
-      Scalable Design
+      <strong>Azure Platforms</strong>
+      End-to-End Data Systems
     </div>
   </div>
 </section>
 
 <section class="section">
-  <h2>Selected Enterprise Impact</h2>
+  <h2>Selected Impact</h2>
 
   <div class="card">
-    <h3>Global Financial Reporting Platform</h3>
+    <h3>Enterprise Financial Data Platform</h3>
     <ul>
-      <li>Reduced reporting cycle by 35%</li>
-      <li>Automated 20+ manual processes</li>
-      <li>Designed semantic model serving 100+ stakeholders</li>
-      <li>Improved dataset performance by 40%</li>
+      <li>Reduced reporting latency by 35%</li>
+      <li>Optimized semantic models improving query performance by 40%</li>
+      <li>Designed scalable data model serving 100+ stakeholders</li>
+      <li>Improved governance & RLS structure</li>
     </ul>
   </div>
 
   <div class="card">
-    <h3>Cost Allocation & Profitability Analytics</h3>
+    <h3>Cost Allocation Engine (SQL-Based)</h3>
     <ul>
-      <li>Designed SQL-based allocation engine</li>
-      <li>Enabled cross-region financial visibility</li>
+      <li>Built allocation logic at warehouse layer</li>
       <li>Reduced reconciliation effort by 30%</li>
+      <li>Enabled cross-region financial transparency</li>
     </ul>
   </div>
 </section>
 
 <section class="section">
-  <h2>Architecture Expertise</h2>
+  <h2>Analytics Engineering & Architecture</h2>
+
   <div class="grid-2">
     <ul>
-      <li>Star & Snowflake schema</li>
-      <li>Enterprise Data Warehouse design</li>
-      <li>Medallion architecture (Azure)</li>
-      <li>ETL / ELT pipelines</li>
+      <li>Dimensional modeling (Star/Snowflake)</li>
+      <li>Warehouse & Medallion architecture</li>
+      <li>Data transformation pipelines (ELT)</li>
+      <li>Performance tuning (SQL & DAX)</li>
     </ul>
     <ul>
-      <li>Power BI semantic modeling</li>
-      <li>DAX & Vertipaq optimization</li>
-      <li>Governance & RLS</li>
-      <li>Scalability & performance tuning</li>
+      <li>Semantic layer engineering</li>
+      <li>Governance & row-level security</li>
+      <li>Scalability design patterns</li>
+      <li>AI-ready structured datasets</li>
     </ul>
   </div>
 </section>
 
 <section class="section">
-  <h2>Modern Analytics & AI</h2>
-  <ul>
-    <li>Azure-based analytics platforms</li>
-    <li>Automation-first BI ecosystems</li>
-    <li>Copilot-assisted workflows</li>
-    <li>AI-ready data modeling</li>
-  </ul>
-</section>
-
-<section class="section">
-  <h2>Professional Experience</h2>
+  <h2>Professional Background</h2>
   <p><strong>PwC</strong> – BI Solutions Expert (2023–Present)</p>
   <p><strong>Franklin Templeton</strong> – Senior BI & Financial Systems Analyst (2014–2023)</p>
   <p><strong>Puratos</strong> – IBM Cognos Developer (2012–2014)</p>
