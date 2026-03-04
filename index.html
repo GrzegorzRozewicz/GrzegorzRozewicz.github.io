@@ -13,7 +13,6 @@
   --text:#e6edf3; --muted:#8b949e; --tag-bg:#1f3a5f; --tag-c:#79c0ff;
   --card:rgba(255,255,255,0.03); --shadow:rgba(0,0,0,0.5); --noise:.035;
   --a1:rgba(77,163,255,0.07); --a2:rgba(63,185,80,0.05); --a3:rgba(180,100,255,0.06);
-  --spotlight:rgba(77,163,255,0.06);
 }
 [data-theme="light"]{
   --bg:#f0f4f8; --bg2:rgba(255,255,255,0.93); --bg3:#e2e8f0;
@@ -22,7 +21,6 @@
   --text:#0f172a; --muted:#64748b; --tag-bg:#dbeafe; --tag-c:#1d4ed8;
   --card:rgba(255,255,255,0.8); --shadow:rgba(0,0,0,0.1); --noise:.015;
   --a1:rgba(29,111,219,0.06); --a2:rgba(22,163,74,0.04); --a3:rgba(139,92,246,0.05);
-  --spotlight:rgba(29,111,219,0.05);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -32,7 +30,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 #spbar{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(to right,var(--accent),#a78bfa,var(--accent2));z-index:9999;transition:width .1s linear;box-shadow:0 0 8px var(--accent)}
 
 /* CURSOR SPOTLIGHT */
-#spotlight{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:3;transform:translate(-50%,-50%);background:radial-gradient(circle,var(--spotlight) 0%,transparent 70%);transition:opacity .3s;opacity:0}
 
 /* MESH */
 .mesh{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -64,16 +61,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .avatar:hover{transform:scale(1.06);box-shadow:0 0 0 6px var(--glow),0 0 48px var(--glow)}
 .avatar img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* GLITCH NAME */
-.sname{font-size:16px;font-weight:700;text-align:center;position:relative;cursor:default}
-.sname:hover{animation:glitch .4s ease}
-.sname::before,.sname::after{content:attr(data-text);position:absolute;left:0;right:0;top:0;text-align:center}
-.sname::before{color:#ff4d6d;clip-path:polygon(0 0,100% 0,100% 40%,0 40%);animation:none}
-.sname::after{color:#4da3ff;clip-path:polygon(0 60%,100% 60%,100% 100%,0 100%);animation:none}
-.sname:hover::before{animation:glitch-t .4s ease}
-.sname:hover::after{animation:glitch-b .4s ease}
-@keyframes glitch-t{0%{transform:translate(0)}20%{transform:translate(-3px,1px)}40%{transform:translate(3px,-1px)}60%{transform:translate(-2px,0)}80%{transform:translate(2px,1px)}100%{transform:translate(0)}}
-@keyframes glitch-b{0%{transform:translate(0)}20%{transform:translate(3px,-1px)}40%{transform:translate(-3px,1px)}60%{transform:translate(2px,0)}80%{transform:translate(-2px,-1px)}100%{transform:translate(0)}}
 
 .stitle{font-size:11.5px;color:var(--muted);text-align:center;margin-top:5px;line-height:1.5}
 .badge{display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(63,185,80,.1);border:1px solid rgba(63,185,80,.3);color:var(--accent2);font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:20px;margin:8px auto 0;width:fit-content}
@@ -95,17 +82,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .ctoast{font-size:10px;color:var(--accent2);margin-left:auto;opacity:0;transition:opacity .3s;pointer-events:none}
 .ctoast.show{opacity:1}
 
-/* SKILL FLAT LIST */
-.skill-flat{display:flex;flex-direction:column;gap:5px}
-.sf-item{display:flex;align-items:center;gap:8px;padding:3px 0}
-.sf-icon{width:14px;height:14px;flex-shrink:0;opacity:.7}
-.sf-name{font-size:12px;color:var(--text);flex:1}
-.sf-dots{display:flex;gap:3px}
-.sf-dot{width:5px;height:5px;border-radius:50%;background:var(--border)}
-.sf-dot.on{background:var(--accent)}
-.sf-dot.on.green{background:var(--accent2)}
-.sf-dot.on.purple{background:#a78bfa}
-.sf-cat{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:8px 0 4px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+/* SKILL ICON TAGS */
+.skill-groups{display:flex;flex-direction:column;gap:10px}
+.sg-cat{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.sg-tags{display:flex;flex-wrap:wrap;gap:5px}
+.sg-tag{display:inline-flex;align-items:center;gap:4px;background:var(--tag-bg);color:var(--tag-c);font-size:10.5px;font-weight:500;padding:3px 8px;border-radius:20px;transition:transform .15s}
+.sg-tag:hover{transform:translateY(-1px)}
+.sg-tag svg{flex-shrink:0;opacity:.8}
 
 .llist{display:flex;flex-direction:column;gap:7px}
 .litem{display:flex;align-items:center;gap:8px}
@@ -217,7 +200,6 @@ ul li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-si
 </head>
 <body>
 <div id="spbar"></div>
-<div id="spotlight"></div>
 <canvas id="particles"></canvas>
 <div class="mesh"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="noise"></div>
@@ -228,7 +210,7 @@ ul li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-si
 <aside class="sidebar">
   <div>
     <div class="avatar"><img src="image.jpg" alt="Grzegorz Różewicz"></div>
-    <div class="sname" data-text="Grzegorz Różewicz">Grzegorz Różewicz</div>
+    <div class="sname">Grzegorz Różewicz</div>
     <div class="stitle">Analytics Engineering<br>Data Architecture · Finance</div>
     <div class="badge"><span class="dot"></span> Available</div>
   </div>
@@ -264,79 +246,36 @@ ul li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-si
   </div>
 
   <div><div class="sh3">Core Skills</div>
-    <div class="skill-flat" id="skillFlat">
-
-      <div class="sf-cat">BI & Reporting</div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12v4M12 8v8M16 10v6"/></svg>
-        <span class="sf-name">Power BI</span>
-        <div class="sf-dots"><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span></div>
+    <div class="skill-groups">
+      <div>
+        <div class="sg-cat">BI &amp; Reporting</div>
+        <div class="sg-tags">
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12v4M12 8v8M16 10v6"/></svg>Power BI</span>
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l4 2"/></svg>DAX</span>
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v4H3zM3 10h18v4H3zM3 17h10v4H3z"/></svg>IBM Cognos</span>
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 20 8 14 12 17 16 9 20 12"/></svg>Tableau</span>
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Power Platform</span>
+        </div>
       </div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l5 3"/></svg>
-        <span class="sf-name">DAX</span>
-        <div class="sf-dots"><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span></div>
+      <div>
+        <div class="sg-cat">Data Engineering</div>
+        <div class="sg-tags">
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>SQL</span>
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Data Modeling</span>
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>ETL / ELT</span>
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>PySpark</span>
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Python</span>
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>CI/CD</span>
+        </div>
       </div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z"/></svg>
-        <span class="sf-name">IBM Cognos</span>
-        <div class="sf-dots"><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot"></span></div>
+      <div>
+        <div class="sg-cat">Cloud &amp; Platform</div>
+        <div class="sg-tags">
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>Azure</span>
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Databricks</span>
+          <span class="sg-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>SAP CRM</span>
+        </div>
       </div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M4 20 L8 14 L12 17 L16 9 L20 12"/></svg>
-        <span class="sf-name">Tableau</span>
-        <div class="sf-dots"><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot"></span><span class="sf-dot"></span></div>
-      </div>
-
-      <div class="sf-cat">Data Engineering</div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
-        <span class="sf-name">SQL</span>
-        <div class="sf-dots"><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span></div>
-      </div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <span class="sf-name">Data Modeling</span>
-        <div class="sf-dots"><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span></div>
-      </div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        <span class="sf-name">ETL / ELT</span>
-        <div class="sf-dots"><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot"></span></div>
-      </div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span class="sf-name">PySpark</span>
-        <div class="sf-dots"><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot"></span></div>
-      </div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="10" y1="13" x2="14" y2="13"/></svg>
-        <span class="sf-name">Python</span>
-        <div class="sf-dots"><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot"></span><span class="sf-dot"></span></div>
-      </div>
-
-      <div class="sf-cat">Cloud & Platform</div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-        <span class="sf-name">Azure</span>
-        <div class="sf-dots"><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot"></span></div>
-      </div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-        <span class="sf-name">Databricks</span>
-        <div class="sf-dots"><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot"></span></div>
-      </div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        <span class="sf-name">CI/CD</span>
-        <div class="sf-dots"><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot"></span><span class="sf-dot"></span></div>
-      </div>
-      <div class="sf-item">
-        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span class="sf-name">Power Platform</span>
-        <div class="sf-dots"><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot"></span><span class="sf-dot"></span></div>
-      </div>
-
     </div>
   </div>
 
@@ -498,17 +437,6 @@ window.addEventListener('scroll',()=>{
   const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);
   document.getElementById('spbar').style.width=(p*100)+'%';
 });
-
-// CURSOR SPOTLIGHT
-const spot=document.getElementById('spotlight');
-let sx=0,sy=0,tx=0,ty=0;
-document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;spot.style.opacity='1'});
-document.addEventListener('mouseleave',()=>spot.style.opacity='0');
-(function animSpot(){
-  sx+=(tx-sx)*.12; sy+=(ty-sy)*.12;
-  spot.style.left=sx+'px'; spot.style.top=sy+'px';
-  requestAnimationFrame(animSpot);
-})();
 
 // PARTICLES
 (function(){
