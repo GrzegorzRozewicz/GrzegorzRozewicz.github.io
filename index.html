@@ -95,16 +95,17 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .ctoast{font-size:10px;color:var(--accent2);margin-left:auto;opacity:0;transition:opacity .3s;pointer-events:none}
 .ctoast.show{opacity:1}
 
-/* SKILL RINGS */
-.skill-rings{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.sring{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:default}
-.sring svg{transform:rotate(-90deg)}
-.sring-track{fill:none;stroke:var(--border);stroke-width:3}
-.sring-fill{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-dasharray:63;stroke-dashoffset:63;transition:stroke-dashoffset 1.2s ease}
-.sring.green .sring-fill{stroke:var(--accent2)}
-.sring.purple .sring-fill{stroke:#a78bfa}
-.sring-label{font-size:9px;color:var(--muted);font-weight:500;text-align:center;max-width:44px;line-height:1.2}
-.rings-visible .sring-fill{stroke-dashoffset:var(--offset)}
+/* SKILL FLAT LIST */
+.skill-flat{display:flex;flex-direction:column;gap:5px}
+.sf-item{display:flex;align-items:center;gap:8px;padding:3px 0}
+.sf-icon{width:14px;height:14px;flex-shrink:0;opacity:.7}
+.sf-name{font-size:12px;color:var(--text);flex:1}
+.sf-dots{display:flex;gap:3px}
+.sf-dot{width:5px;height:5px;border-radius:50%;background:var(--border)}
+.sf-dot.on{background:var(--accent)}
+.sf-dot.on.green{background:var(--accent2)}
+.sf-dot.on.purple{background:#a78bfa}
+.sf-cat{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:8px 0 4px;padding-bottom:4px;border-bottom:1px solid var(--border)}
 
 .llist{display:flex;flex-direction:column;gap:7px}
 .litem{display:flex;align-items:center;gap:8px}
@@ -263,19 +264,79 @@ ul li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-si
   </div>
 
   <div><div class="sh3">Core Skills</div>
-    <div class="skill-rings" id="skillRings">
-      <div class="sring" data-pct="95"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">Power BI</div></div>
-      <div class="sring" data-pct="92"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">DAX</div></div>
-      <div class="sring" data-pct="93"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">SQL</div></div>
-      <div class="sring green" data-pct="88"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">Azure</div></div>
-      <div class="sring green" data-pct="85"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">Databricks</div></div>
-      <div class="sring green" data-pct="82"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">PySpark</div></div>
-      <div class="sring purple" data-pct="80"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">Python</div></div>
-      <div class="sring purple" data-pct="78"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">CI/CD</div></div>
-      <div class="sring" data-pct="90"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">Data Model</div></div>
-      <div class="sring green" data-pct="76"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">ESG</div></div>
-      <div class="sring" data-pct="88"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">ETL/ELT</div></div>
-      <div class="sring purple" data-pct="83"><svg width="24" height="24" viewBox="0 0 24 24"><circle class="sring-track" cx="12" cy="12" r="10"/><circle class="sring-fill" cx="12" cy="12" r="10"/></svg><div class="sring-label">BI Arch</div></div>
+    <div class="skill-flat" id="skillFlat">
+
+      <div class="sf-cat">BI & Reporting</div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12v4M12 8v8M16 10v6"/></svg>
+        <span class="sf-name">Power BI</span>
+        <div class="sf-dots"><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span></div>
+      </div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l5 3"/></svg>
+        <span class="sf-name">DAX</span>
+        <div class="sf-dots"><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span></div>
+      </div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z"/></svg>
+        <span class="sf-name">IBM Cognos</span>
+        <div class="sf-dots"><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot"></span></div>
+      </div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M4 20 L8 14 L12 17 L16 9 L20 12"/></svg>
+        <span class="sf-name">Tableau</span>
+        <div class="sf-dots"><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot on"></span><span class="sf-dot"></span><span class="sf-dot"></span></div>
+      </div>
+
+      <div class="sf-cat">Data Engineering</div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+        <span class="sf-name">SQL</span>
+        <div class="sf-dots"><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span></div>
+      </div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="sf-name">Data Modeling</span>
+        <div class="sf-dots"><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span></div>
+      </div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <span class="sf-name">ETL / ELT</span>
+        <div class="sf-dots"><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot"></span></div>
+      </div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span class="sf-name">PySpark</span>
+        <div class="sf-dots"><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot"></span></div>
+      </div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="10" y1="13" x2="14" y2="13"/></svg>
+        <span class="sf-name">Python</span>
+        <div class="sf-dots"><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot on green"></span><span class="sf-dot"></span><span class="sf-dot"></span></div>
+      </div>
+
+      <div class="sf-cat">Cloud & Platform</div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+        <span class="sf-name">Azure</span>
+        <div class="sf-dots"><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot"></span></div>
+      </div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        <span class="sf-name">Databricks</span>
+        <div class="sf-dots"><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot"></span></div>
+      </div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <span class="sf-name">CI/CD</span>
+        <div class="sf-dots"><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot"></span><span class="sf-dot"></span></div>
+      </div>
+      <div class="sf-item">
+        <svg class="sf-icon" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="sf-name">Power Platform</span>
+        <div class="sf-dots"><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot on purple"></span><span class="sf-dot"></span><span class="sf-dot"></span></div>
+      </div>
+
     </div>
   </div>
 
@@ -544,25 +605,6 @@ document.addEventListener('mouseleave',()=>spot.style.opacity='0');
   document.querySelectorAll('.mrow').forEach(r=>io.observe(r));
 })();
 
-// SKILL RINGS
-(function(){
-  const circ=2*Math.PI*10; // r=10
-  document.querySelectorAll('.sring').forEach(r=>{
-    const pct=+r.dataset.pct/100;
-    const offset=circ*(1-pct);
-    r.querySelector('.sring-fill').style.setProperty('--offset',offset);
-  });
-  const io=new IntersectionObserver(es=>{
-    es.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('rings-visible');
-        io.unobserve(e.target);
-      }
-    });
-  },{threshold:0.2});
-  const rings=document.getElementById('skillRings');
-  if(rings)io.observe(rings);
-})();
 
 // 3D TILT
 document.querySelectorAll('.tilt').forEach(card=>{
